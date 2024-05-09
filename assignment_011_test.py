@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from scipy.optimize import curve_fit
+import mysql.connector
 import sys
 
 # Load data from CSV files
@@ -73,8 +74,9 @@ print("Chosen ideal function parameters:")
 for i, params in enumerate(chosen_functions):
     print(f"Ideal Function {i+1}: x={params[0]}, y={params[1]}")
 
-
+print()
 print("Mappings:")
+print()
 print("x, y, Best fit parameters (A), Best fit parameters (B), Deviation")
 for i, (x, y, best_fit_params, deviation) in enumerate(mappings):
     if best_fit_params is not None:
