@@ -84,4 +84,4 @@ for i, (x, y, best_fit_params, deviation) in enumerate(mappings):
         # print(f"Data point {i+1}: x={x}, y={y}, Best fit parameters: a={best_fit_params[0]}, b={best_fit_params[1]}, Deviation: {deviation}")
     else:
         print(f"Data point {i+1}: x={x}, y={y}, No best fit found within the deviation threshold")
-    # print("M : ",mappings)
+    # print("M : ",mappingss)
