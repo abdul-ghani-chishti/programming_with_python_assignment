@@ -8,7 +8,6 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-# sql = "DROP DATABASE IF EXISTS python_assignment_chishti"
 sql_queries = [
     "DROP DATABASE IF EXISTS python_assignment_chishti",
     "CREATE TABLE train (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))",
@@ -16,11 +15,10 @@ sql_queries = [
     "CREATE TABLE test (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))",
     "CREATE TABLE best_fit_func (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))",
     "CREATE TABLE result (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))"]
-# print(sql_queries[0])
-# sys.exit()
+
 mycursor.execute(sql_queries[0])
 
-mycursor.execute("CREATE DATABASE python_assignment_chishti")
+# mycursor.execute("CREATE DATABASE python_assignment_chishti") 
 
 mydb_1 = mysql.connector.connect(
     host="localhost",
@@ -34,4 +32,4 @@ mycursor_1 = mydb_1.cursor()
 for i, table in enumerate(sql_queries):
     if i > 0:
         mycursor_1.execute(table)
-        print(i)
+        print("Database and Tables Created Successfully !")
