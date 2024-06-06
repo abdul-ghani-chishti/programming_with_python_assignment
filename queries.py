@@ -8,27 +8,20 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-# sql_queries = [
-#     "DROP DATABASE IF EXISTS python_assignment_chishti",
-#     "CREATE DATABASE python_assignment_chishti",
-#     "CREATE TABLE train (id INT AUTO_INCREMENT PRIMARY KEY, x_value int(255), y1 int(255), y2 int(255), y3 int(255), y4 int(255))",
-#     "CREATE TABLE test (id INT AUTO_INCREMENT PRIMARY KEY, x_value int(255), y_value int(255))",
-#     "CREATE TABLE best_fit_func (id INT AUTO_INCREMENT PRIMARY KEY, x_value int(255), y_value int(255))",
-#     "CREATE TABLE mapping (id INT AUTO_INCREMENT PRIMARY KEY, x_value int(255), y_value int(255), a int(255), b int(255), deviation int(255))"
-# ]
-
-
 sql_queries = [
     "DROP DATABASE IF EXISTS python_assignment_chishti",
     "CREATE DATABASE python_assignment_chishti",
-    "CREATE TABLE ideal (id INT AUTO_INCREMENT PRIMARY KEY, x int(255))",
-    *[f"ALTER TABLE ideal ADD COLUMN y{i+1} int;" for i in range(0, 50)],
-
+    "CREATE TABLE train (id INT AUTO_INCREMENT PRIMARY KEY, x float, y1 float, y2 float, y3 float, y4 float)",
+    "CREATE TABLE test (id INT AUTO_INCREMENT PRIMARY KEY, x float, y float)",
+    "CREATE TABLE best_fit_func (id INT AUTO_INCREMENT PRIMARY KEY, x float, y float)",
+    "CREATE TABLE mapping (id INT AUTO_INCREMENT PRIMARY KEY, x float, y float, a float, b float, deviation float)",
+    "CREATE TABLE ideal (id INT AUTO_INCREMENT PRIMARY KEY, x float)",
+    *[f"ALTER TABLE ideal ADD COLUMN y{i+1} float;" for i in range(0, 50)]    
 ]
 
 mycursor.execute(sql_queries[0])
 mycursor.execute(sql_queries[1])
-# sys.exit()
+
 mydb_1 = mysql.connector.connect(
     host="localhost",
     user="root",
