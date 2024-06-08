@@ -15,10 +15,17 @@ mydb_1 = mysql.connector.connect(
 )
 
 mycursor_1 = mydb_1.cursor()
+mycursor_1.execute("show databases")
+databases = mycursor_1.fetchall()
+database_name = [ i[0] for i in databases ]
+
+if 'python_assignment_chishti' in database_name:
+    print('true')
+else:
+    print('Database not found, First run queries.py on terminal !')
+    sys.exit()
 
 # Load data from CSV files to veriables
-
-
 def load_data(file_path):
     data = pd.read_csv(file_path)
     x = data['x'].values
@@ -27,14 +34,10 @@ def load_data(file_path):
     return x, y_values
 
 # ideal function
-
-
 def ideal_function(x, a, b):
     return a * x + b
 
 # Fit ideal function to training data
-
-
 def fit_ideal_functions(training_data, ideal_functions):
     best_functions = []
     min_sum_squared_deviations = float('inf')
@@ -61,8 +64,6 @@ def fit_ideal_functions(training_data, ideal_functions):
     # put these values into the best_fit_function table
 
 # Map test data to chosen ideal functions
-
-
 def map_test_data(test_data, chosen_functions):
     x_test, y_test = test_data
     mappings = []
@@ -151,6 +152,8 @@ print(" x       y        Best fit (A)     Best fit  (B)      Deviation")
 for i, (x, y, best_fit_params, deviation) in enumerate(mappings):
     if best_fit_params is not None:
         print(x, y[0], best_fit_params[0], best_fit_params[1], deviation[0])
+        data_to_insert = [(x, y[0], best_fit_params[0], best_fit_params[1], deviation[0])]
+        mycursor_1.executemany("INSERT INTO mapping (x,y,ideal_x,ideal_y,deviation) VALUES (%s, %s, %s, %s, %s)", data_to_insert)
     else:
         print(f"Data point {
               i+1}: x={x}, y={y}, No best fit found within the deviation threshold")
@@ -198,7 +201,6 @@ def plot_data_with_bokeh(x_train, y_train, x_test, y_test, chosen_functions, map
         show(p)
     except Error as e:
         print(f"Wrong ! {e}")
-
 
 # Plot the data using Bokeh
 plot_data_with_bokeh(x_train, y_train, x_test, y_test,
