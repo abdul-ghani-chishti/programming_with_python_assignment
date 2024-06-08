@@ -13,8 +13,8 @@ sql_queries = [
     "CREATE DATABASE python_assignment_chishti",
     "CREATE TABLE train (id INT AUTO_INCREMENT PRIMARY KEY, x float, y1 float, y2 float, y3 float, y4 float)",
     "CREATE TABLE test (id INT AUTO_INCREMENT PRIMARY KEY, x float, y float)",
-    "CREATE TABLE best_fit_func (id INT AUTO_INCREMENT PRIMARY KEY, x float, y float)",
-    "CREATE TABLE mapping (id INT AUTO_INCREMENT PRIMARY KEY, x float, y float, a float, b float, deviation float)",
+    "CREATE TABLE best_fit_func (id INT AUTO_INCREMENT PRIMARY KEY, x float, y float, choosen_func float)",
+    "CREATE TABLE mapping (id INT AUTO_INCREMENT PRIMARY KEY, x float, y float, ideal_x float, ideal_y float, deviation float)",
     "CREATE TABLE ideal (id INT AUTO_INCREMENT PRIMARY KEY, x float)",
     *[f"ALTER TABLE ideal ADD COLUMN y{i+1} float;" for i in range(0, 50)]    
 ]
