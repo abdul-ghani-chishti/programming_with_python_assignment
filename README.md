@@ -1,2 +1,4 @@
-# programming_with_python_assignment
-Its a branch in which my programming with python assignment is.
+# programming_with_python_assignment DLMDSPWP01
+Python code for an assignment from IUBH
+Description:
+
