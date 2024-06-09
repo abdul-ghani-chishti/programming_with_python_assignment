@@ -25,9 +25,7 @@ else:
     print('Database not found, First run queries.py on terminal !')
     sys.exit()
 
-# Load data from CSV files to veriables
-
-
+# CSV files to veriables
 def load_data(file_path):
     data = pd.read_csv(file_path)
     x_val = data['x'].values
@@ -36,14 +34,10 @@ def load_data(file_path):
     return x_val, y_val
 
 # ideal function
-
-
 def ideal_function(x, a, b):
     return a * x + b
 
 # Fit ideal function to training data
-
-
 def fit_ideal_functions(training_data, ideal_functions):
     best_function_val = []
     min_deviation = float('inf')
@@ -70,8 +64,6 @@ def fit_ideal_functions(training_data, ideal_functions):
     # put these values into the best_fit_function table
 
 # Map test data to chosen ideal functions
-
-
 def map_test_data(test_data, chosen_functions):
     x_test, y_test = test_data
     mappings = []
@@ -215,9 +207,11 @@ def plot_data_with_bokeh(x_train, y_train, x_test, y_test, chosen_functions, map
         output_file("data_analysis.html")
         show(p)
     except Error as e:
-        print(f"Wrong ! {e}")
+        print(f"Something Went Wrong !!! {e}")
 
 
 # Plot the data using Bokeh
 plot_data_with_bokeh(x_train, y_train, x_test, y_test,
                      chosen_functions, mappings)
+
+print("Enjoy & Have A Nice Day <3")
