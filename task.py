@@ -221,24 +221,3 @@ def plot_data_with_bokeh(x_train, y_train, x_test, y_test, chosen_functions, map
 # Plot the data using Bokeh
 plot_data_with_bokeh(x_train, y_train, x_test, y_test,
                      chosen_functions, mappings)
-
-#Best fit plotting
-# p = figure(title="Best Fit Functions", x_axis_label='x',
-#            y_axis_label='y', width=800, height=600)
-
-# x_range = chosen_functions[0]
-# x_range_val = [i[0] for i in x_range]
-# y_range = chosen_functions[0]
-# y_range_val = [i[1] for i in y_range]
-# fit = chosen_functions[1]
-# p.line(x_range_val, y_range_val, legend_label="X-Best-Fit.", color="blue", line_width=2)
-# p.line(x_range_val, y_range_val, legend_label="Y-Best-Fit", color="red", line_width=2)
-# p.line(x_range_val, fit, legend_label="Best-Fit", color="green", line_width=2)
-
-# # hover = HoverTool()
-# # hover.tooltips = [("x", "@x_range_val"), ("y", "@y_range_val"),("Best Fit", "@fit")]
-# # p.add_tools(hover)
-
-# p.legend.location = "top_left"
-# output_file("best_fit.html")
-# show(p)
