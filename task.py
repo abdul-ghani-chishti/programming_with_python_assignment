@@ -204,14 +204,34 @@ def plot_data_with_bokeh(x_train, y_train, x_test, y_test, chosen_functions, map
         p.add_tools(hover)
 
         p.legend.location = "top_left"
-        output_file("data_analysis.html")
+        output_file("mapping.html")
         show(p)
     except Error as e:
         print(f"Something Went Wrong !!! {e}")
 
-
-# Plot the data using Bokeh
 plot_data_with_bokeh(x_train, y_train, x_test, y_test,
                      chosen_functions, mappings)
+
+def plot_data_xtrain_ytrain(x,y):
+    p = figure(title="Training Dataset", x_axis_label="x", y_axis_label="y")
+
+    p.line(x, y[:, 0], legend_label="x y1", color="yellow", line_width=2)
+    p.line(x, y[:, 1], legend_label="x y2", color="green", line_width=2)
+    p.line(x, y[:, 2], legend_label="x y3", color="blue", line_width=2)
+    p.line(x, y[:, 3], legend_label="x y4", color="red", line_width=2)
+
+    output_file("train.html")
+    show(p)
+plot_data_xtrain_ytrain(x_train,y_train)
+
+def plot_data_xtest_ytest(x,y):
+    
+    p = figure(title="Test Dataset", x_axis_label="x", y_axis_label="y")
+
+    p.line(x, y[:,0], legend_label="x y", color="yellow", line_width=2)
+    
+    output_file("test.html")
+    show(p)
+plot_data_xtest_ytest(x_test, y_test)
 
 print("Enjoy & Have A Nice Day <3")
